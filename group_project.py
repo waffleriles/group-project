@@ -38,13 +38,19 @@ def bookEvent(company, id):
             print("That ID doesn't exist. Try again.")
         
         date = input("What time is your event? ")
-        company[id] = {"Date: ": str(date)}
         place = input("Where is your event located? ")
-        company[id] = {"Place: ": str(place)}
         placeCost = input("How much will the place cost? ")
-        company[id] = {"Place Cost: ": str(placeCost)}
         employeeCost = input ("How much is the employee cost? ")
-        company[id] = {"Employee Cost: ": str(employeeCost)}
+
+    event[id] = {
+        "Date: ": str(date),
+        "Place: ": str(place),
+        "Place Cost: ": str(placeCost),
+        "Employee Cost: ": str(employeeCost)
+    }
+
+    print(company[id])
+    print(event[id])
 
 
 def printCompany(company, id):
@@ -52,14 +58,12 @@ def printCompany(company, id):
         printClient(company, id)
 
 def printClient(company, id):
-    if not checkID:
-        print("Client is not in system")
+    for id in company:
+        if not checkID:
+            print("Client is not in system")
     
-    print("Client", company[id]["Name: "])
-    print("Events: ")
-    print("Date: ", company[id]["Name: "])
-    print("Place: ", company[id]["Place: "])
-    print("Employee Cost: ", company[id]["Employee Cost"])
+    print(company[id])
+    print(event(id))
 
     return ""
 
@@ -82,6 +86,7 @@ def printCompany(id):
 
 #Main Program
 company = {}
+event = {}
 op = ""
 while op!="X":
     op = menu()
